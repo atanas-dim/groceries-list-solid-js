@@ -1,13 +1,16 @@
-import type { Component } from 'solid-js';
+import type { Component } from "solid-js";
 
-import logo from './logo.svg';
-import styles from './App.module.css';
+import logo from "./logo.svg";
+import styles from "./App.module.scss";
+
+import SearchBar from "./components/search/SearchBar";
 
 const App: Component = () => {
   return (
-    <div class={styles.App}>
+    <div class={styles.app}>
       <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
+        <h1>Groceries</h1>
+        {/* <img src={logo} class={styles.logo} alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -18,8 +21,9 @@ const App: Component = () => {
           rel="noopener noreferrer"
         >
           Learn Solid
-        </a>
+        </a> */}
       </header>
+      <SearchBar />
     </div>
   );
 };
