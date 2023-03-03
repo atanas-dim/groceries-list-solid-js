@@ -1,2 +1,8 @@
 node_modules
 dist
+
+# env files
+.env.local
+.env
+.env.production
+.env.development
