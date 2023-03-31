@@ -1,6 +1,7 @@
 import {
   AspectRatio,
   Box,
+  CircularProgress,
   Grid,
   GridItem,
   Input,
@@ -10,17 +11,19 @@ import {
 import { Component, createSignal } from "solid-js";
 
 import { searchGroceries } from "../../services/groceries-api";
-import styles from "./Search.module.scss";
 
 const Search: Component = () => {
   const [searchTerm, setSearchTerm] = createSignal<string>("");
   const [searchResults, setSearchResults] = createSignal<any[]>([]);
+  const [isLoading, setIsLoading] = createSignal(false);
 
   const onSubmit = (e: SubmitEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     searchGroceries(searchTerm()).then((data) => {
       console.log({ data });
       setSearchResults(data);
+      setIsLoading(false);
     });
   };
 
@@ -33,6 +36,16 @@ const Search: Component = () => {
           onChange={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
         />
       </Box>
+      {isLoading() && (
+        <CircularProgress
+          css={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)",
+          }}
+        />
+      )}
       <SimpleGrid
         columns={{ "@initial": 2, "@md": 3, "@lg": 4, "@xl": 5 }}
         gap="$6"
