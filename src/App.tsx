@@ -2,7 +2,7 @@ import type { Component } from "solid-js";
 
 import styles from "./App.module.scss";
 
-import SearchBar from "./components/search/Search";
+import Search from "./components/search/Search";
 
 const App: Component = () => {
   return (
@@ -10,7 +10,7 @@ const App: Component = () => {
       <header class={styles.header}>
         <h1>Groceries</h1>
       </header>
-      <SearchBar />
+      <Search />
     </div>
   );
 };

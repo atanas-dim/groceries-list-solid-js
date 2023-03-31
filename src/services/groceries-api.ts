@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// EDAMAM Rapid API
 export const searchGroceries = async (searchTerm: string) => {
   try {
     const data = await axios.get(import.meta.env.VITE_GROCERIES_API_URL, {
